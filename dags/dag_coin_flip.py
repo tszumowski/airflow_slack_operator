@@ -1,3 +1,11 @@
+""" dag_coin_flip.py
+
+An example of using the Slack Alert airflow function with a simple single-task DAG.
+It uses the PythonOperator to simulate a coin flip. If the coin flips "tails" it 
+raises an exception, forcing a failed task Slack alert. If the coin flips "heads"
+it passes and calls the succeess task Slack alert.
+
+"""
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from datetime import datetime, timedelta
@@ -6,6 +14,19 @@ import random
 
 
 def coin_flip():
+    """
+    This is the simple coin flip code that raises an exception "half the time"
+
+    Args:
+        None
+
+    Returns:
+        True only if coin flips "heads"
+
+    Raises:
+        ValueError: If coin flips "tails"
+
+    """
     flip = random.random() > 0.5
     if not flip:
         raise ValueError("Coin flipped tails. We lose!")
@@ -13,6 +34,7 @@ def coin_flip():
     return True
 
 
+# Default DAG arguments. Note the "onl_failure_callback"
 default_args = {
     "owner": "airflow",
     "depends_on_past": False,

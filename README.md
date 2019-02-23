@@ -4,6 +4,8 @@ This provides a module and example usage for an Airflow Slack alert operator. It
 [Integrating Slack Alerts in Airflow](https://medium.com/datareply/integrating-slack-alerts-in-airflow-c9dcd155105) 
 Medium article, with some minor additions and example code. 
 
+This Medium article, [Slack Alerts in Airflow](https://medium.com/@tszumowski/slack-alerts-in-airflow-1fc16f322b51) describes this code with some visuals.
+
 # Usage
 
 This assumes you already have Airflow running. 

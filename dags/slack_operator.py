@@ -39,7 +39,7 @@ def task_success_slack_alert(context):
 
     success_alert = SlackWebhookOperator(
         task_id="slack_test",
-        http_conn_id="slack",
+        http_conn_id=SLACK_CONN_ID,
         webhook_token=slack_webhook_token,
         message=slack_msg,
         username="airflow",
@@ -76,7 +76,7 @@ def task_fail_slack_alert(context):
 
     failed_alert = SlackWebhookOperator(
         task_id="slack_test",
-        http_conn_id="slack",
+        http_conn_id=SLACK_CONN_ID,
         webhook_token=slack_webhook_token,
         message=slack_msg,
         username="airflow",
